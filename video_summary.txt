@@ -1,0 +1,2 @@
+The HyQ2Max platform performing the posture recovery task in simulation. We present two scenarios, emphasizing the effect of different cost functions on the overall result (i.e., different final trunk height). The video highlights the potential of our whole-body optimization methodology for non-periodic tasks on quadrupedal systems.
+

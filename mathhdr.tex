@@ -1,0 +1,193 @@
+%%%%%%%%%%% useful math stuff %%%%%%%%%%%
+\newcommand{\twovec}[2]{\left[\begin{array}{c}
+                                  #1\\ #2\\
+                            \end{array}
+                       \right]}
+\newcommand{\threevec}[3]{\left[\begin{array}{c}
+                                  #1\\ #2\\ #3 \\
+                            \end{array}
+                       \right]}
+\newcommand{\fourvec}[4]{\left[\begin{array}{c}
+                                  #1\\ #2\\ #3 \\ #4\\
+                            \end{array}
+                       \right]}
+
+\newcommand{\tworvec}[2]{\left[\begin{array}{cc}
+                                  #1 & #2\\
+                            \end{array}
+                       \right]}
+
+\newcommand{\threervec}[3]{\left[\begin{array}{ccc}
+                                  #1 & #2 & #3\\
+                            \end{array}
+                       \right]}
+
+\newcommand{\fourrvec}[4]{\left[\begin{array}{cccc}
+                                  #1 & #2 & #3 & #4\\
+                            \end{array}
+                       \right]}
+
+\newcommand{\twovect}[2]{[\;#1,\;#2\;]^T}
+\newcommand{\threevect}[3]{[\;#1,\;#2,\;#3\;]^T}
+\newcommand{\fourvect}[4]{[\;#1,\;#2,\;#3,\;#4\;]^T}
+\newcommand{\twomatrix}[4]{ \left[\begin{array}{cc}
+                                   #1 & #2\\
+                                   #3 & #4\\
+                                 \end{array}
+                           \right]}
+\newcommand{\threematrix}[9]{ \left[\begin{array}{ccc}
+                                   #1 & #2 & #3 \\
+                                   #4 & #5 & #6 \\
+				   #7 & #8 & #9 \\
+                                 \end{array}
+                           \right]}
+\newcommand{\eqdef}{\stackrel{\rm def}{=}}
+\newcommand{\diag}{\mathrm{diag}}
+
+% partial derivatives
+\newcommand{\partiald}[2]{
+\frac{\partial #1}{\partial #2}}
+
+\newcommand{\partialtwod}[2]{
+\frac{\partial^{2} #1}{\partial #2}}
+
+%%% definition of boldmath letters %%%
+
+   %%% lower case Greek letters
+\def \Balpha      { {\mbox{\boldmath $\alpha$}}}
+\def \Bbeta       { {\mbox{\boldmath $\beta$}}}
+\def \Bgamma      { {\mbox{\boldmath $\gamma$}}}
+\def \Bdelta      { {\mbox{\boldmath $\delta$}}}
+\def \Bepsilon    { {\mbox{\boldmath $\epsilon$}}}
+\def \Bvarepsilon { {\mbox{\boldmath $\varepsilon$}}}
+
+\def \Bzeta       { {\mbox{\boldmath $\zeta$}}}
+\def \Beta        { {\mbox{\boldmath $\eta$}}}
+\def \Btheta      { {\mbox{\boldmath $\theta$}}}
+\def \Bvartheta   { {\mbox{\boldmath $\vartheta$}}}
+\def \Biota       { {\mbox{\boldmath $\iota$}}}
+
+\def \Bkappa      { {\mbox{\boldmath $\kappa$}}}
+\def \Blambda     { {\mbox{\boldmath $\lambda$}}}
+\def \Bmu         { {\mbox{\boldmath $\mu$}}}
+\def \Bnu         { {\mbox{\boldmath $\nu$}}}
+\def \Bxi         { {\mbox{\boldmath $\xi$}}}
+\def \Bomicron    { {\mbox{\boldmath $o$}}}
+
+\def \Bpi         { {\mbox{\boldmath $\pi$}}}
+\def \Bphi        { {\mbox{\boldmath $\phi$}}}
+\def \Brho        { {\mbox{\boldmath $\rho$}}}
+\def \Bvarrho     { {\mbox{\boldmath $\varrho$}}}
+\def \Bsigma      { {\mbox{\boldmath $\sigma$}}}
+\def \Bvarsigma   { {\mbox{\boldmath $\varsigma$}}}
+
+\def \Btau        { {\mbox{\boldmath $\tau$}}}
+\def \Bupsilon    { {\mbox{\boldmath $\upsilon$}}}
+\def \Bphi        { {\mbox{\boldmath $\phi$}}}
+\def \Bvarphi     { {\mbox{\boldmath $\varphi$}}}
+\def \Bchi        { {\mbox{\boldmath $\chi$}}}
+\def \Bpsi        { {\mbox{\boldmath $\psi$}}}
+\def \Bomega      { {\mbox{\boldmath $\omega$}}}
+
+
+   %%% upper case Greek letters
+\def \BAlpha      { {\bf A} }
+\def \BBeta       { {\bf B} }
+\def \BGamma      { {\bf \Gamma} }
+\def \BDelta      { {\bf \Delta} }
+\def \BEpsilon    { {\bf E} }
+
+\def \BZeta       { {\bf Z} }
+\def \BEta        { {\bf H} }
+\def \BTheta      { {\bf \Theta} }
+\def \BIota       { {\bf I} }
+
+\def \BKappa      { {\bf K} }
+\def \BLambda     { {\bf \Lambda} }
+\def \BMu         { {\bf M} }
+\def \BNu         { {\bf N} }
+\def \BXi         { {\bf \Xi} }
+\def \BOmicron    { {\bf O} }
+
+\def \BPi         { {\bf \Pi} }
+\def \BPhi        { {\bf \Phi} }
+\def \BRho        { {\bf P} }
+\def \BSigma      { {\bf \Sigma} }
+
+\def \BTau        { {\bf T} }
+\def \BUpsilon    { {\bf \Upsilon} }
+\def \BPhi        { {\bf \Phi} }
+\def \BChi        { {\bf X} }
+\def \BPsi        { {\bf \Psi} }
+\def \BOmega      { {\bf \Omega} }
+
+   %%% lower case bold letters
+\def \Ba { {\bf a} }
+\def \Bb { {\bf b} }
+\def \Bc { {\bf c} }
+\def \Bd { {\bf d} }
+\def \Be { {\bf e} }
+\def \Bf { {\bf f} }
+\def \Bg { {\bf g} }
+\def \Bh { {\bf h} }
+\def \Bi { {\bf i} }
+\def \Bj { {\bf j} }
+\def \Bk { {\bf k} }
+\def \Bl { {\bf l} }
+\def \Bm { {\bf m} }
+\def \Bn { {\bf n} }
+\def \Bo { {\bf o} }
+\def \Bp { {\bf p} }
+\def \Bq { {\bf q} }
+\def \Br { {\bf r} }
+\def \Bs { {\bf s} }
+\def \Bt { {\bf t} }
+\def \Bu { {\bf u} }
+\def \Bv { {\bf v} }
+\def \Bw { {\bf w} }
+\def \Bx { {\bf x} }
+\def \By { {\bf y} }
+\def \Bz { {\bf z} }
+
+   %%% upper case bold letters
+\def \BA { {\bf A} }
+\def \BB { {\bf B} }
+\def \BC { {\bf C} }
+\def \BD { {\bf D} }
+\def \BE { {\bf E} }
+\def \BF { {\bf F} }
+\def \BG { {\bf G} }
+\def \BH { {\bf H} }
+\def \BI { {\bf I} }
+\def \BJ { {\bf J} }
+\def \BK { {\bf K} }
+\def \BL { {\bf L} }
+\def \BM { {\bf M} }
+\def \BN { {\bf N} }
+\def \BO { {\bf O} }
+\def \BP { {\bf P} }
+\def \BQ { {\bf Q} }
+\def \BR { {\bf R} }
+\def \BS { {\bf S} }
+\def \BT { {\bf T} }
+\def \BU { {\bf U} }
+\def \BV { {\bf V} }
+\def \BW { {\bf W} }
+\def \BX { {\bf X} }
+\def \BY { {\bf Y} }
+\def \BZ { {\bf Z} }
+
+%%%  bold numbers
+\def \Bzero { {\bf 0} }
+\def \Bone  { {\bf 1} }
+
+%%% Re %%% need \usepackage{amsfonts}
+\usepackage{amsfonts}
+\def \Real { \mathbb{R} }
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+%%% end of math stuff
+

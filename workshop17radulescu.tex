@@ -1,0 +1,191 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+% \documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line 
+% out if you need a4paper
+
+\documentclass[usletter, 10pt, conference]{ieeeconf}      % Use this line for a4 
+% paper
+% \usepackage[backend=bibtex,bibstyle=ieee,citestyle=numeric-comp]{biblatex}
+% \bibliography{icra17radulescu}
+\usepackage{graphicx}\graphicspath{{figures/}}
+\usepackage{todonotes}
+\renewcommand{\todo}[1]{\textcolor{magenta}{[TODO: #1]}}
+\usepackage{amsmath,amsfonts,euscript,amscd,amssymb}
+% \numberwithin{equation}{chapter}
+% \usepackage{caption}
+% \captionsetup[figure]{figurewithin=chapter}
+% \numberwithin{table}{chapter}
+% \usepackage{multirow, setspace} 
+% \usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algorithmic} 
+\usepackage{epsfig}
+\usepackage{enumerate}
+\usepackage{gensymb}
+\usepackage{notoccite}
+\usepackage{svg}
+\usepackage{url}
+\pdfminorversion=4
+% \usepackage[noadjust]{cite}
+% \usepackage{cite}
+% \usepackage[utf8x]{inputenc}
+\input{symbols}
+\input{mathhdr}
+\IEEEoverridecommandlockouts                              % This command is only 
+% needed if 
+                                                          % you want to use the 
+% \thanks %command
+
+\overrideIEEEmargins                                      % Needed to meet 
+% printer requirements.
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+
+% \title{\LARGE \bf Whole-body Trajectory Optimization for \\ Non-periodic Dynamic 
+% Motions on Quadrupedal Systems}
+
+\title{\LARGE \bf Whole-body Trajectory Optimization for Non-periodic Dynamic Motions in Legged Systems}
+\author{Andreea Radulescu$^{1}$  Ioannis Havoutis$^{2,3}$ Darwin G. Caldwell$^1$ Claudio Semini$^{1}$ 
+% \thanks{*This research is funded by the Fondazione Istituto Italiano di Tecnologia}% <-this % stops a space
+\thanks{$^{1}$Department of Advanced Robotics, Istituto Italiano di
+Tecnologia, Genova, Italy. \textit{email}: {\tt\small \{andreea.radulescu, darwin.caldwell,  claudio.semini\}@iit.it}}%
+\thanks{$^{2}$Robot Learning and Interaction Group, Idiap Research Institute, 
+Martigny, Switzerland \textit{email}: {\tt\small ioannis.havoutis@idiap.ch}}%
+\thanks{$^{3}$Oxford Robotics Institute, Department of Engineering Science, University of Oxford, United Kingdom. {\tt\small ihavoutis@robots.ox.ac.uk}}%
+}
+
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+We present a whole-body optimization methodology for non-periodic tasks on quadrupedal systems (rearing and pose recovery). 
+This approach delivers solutions involving multiple contacts without 
+the need for predefined feet placements. The results obtained show the potential of such methods for 
+motion synthesis in the context of complex tasks. The work described has been presented in
+detail in \cite{icra17radulescu}.
+\end{abstract}
+
+% \begin{keywords}
+% \textit{optimization, parametrized policy, multi-legged systems, switching contacts,
+% non-periodic movements, quadruped, posture recovery, whole-body trajectory}
+% \end{keywords}
+
+\section{Introduction}
+
+A fully autonomous locomotion system would have to complete a heterogeneous range of tasks, some
+of which would require non-periodic solutions which could be described as single-shot movements.
+Examples in quadrupedal locomotion include rearing, overcoming an obstacle or gap, 
+squat-jumping in place, posture and fall recovery. 
+
+Currently, the majority of robotic systems operating in an unsafe, disorganized and cluttered 
+environment (e.g., search and rescue missions, disaster response, nuclear decommissioning) have to rely 
+heavily on teleoperation in order to achieve their objectives. 
+Optimization and learning methodologies could deliver solutions for such scenarios 
+by using high-level task specifications, in the form of an evaluation criterion 
+of the overall performance of the emerging behavior. 
+
+\section{State of the art}
+
+The relationship between learning and optimization has been under analysis for a long time
+\cite{bennett2006interplay,kober2013reinforcement}. However, it is only in the recent past
+that their use has been extended to high dimensional problems, common to modern
+multi-degree-of-freedom (DoF) robotics applications. 
+Various optimization techniques were proposed for dealing with multiple contact events. 
+One popular approach is based on online Model Predictive Control (MPC)
+\cite{Erez2011,posa_tedrake.IJRR2014}.
+Methods such as Policy Improvement with Path Integrals ($PI^2$) \cite{theodorou2010generalized}, 
+based on stochastic optimal control principles, were also successful in generating 
+optimal solutions for robotic systems \cite{kalakrishnan2011learning, fankhauser2013reinforcement}.
+The Covariance Matrix Adaptation (CMA) algorithm \cite{hansen2001completely} 
+has been similarly used to generate whole body movements \cite{gehring2016practice}. 
+
+Another major challenge is solving such high-level tasks without the use of 
+pre-defined heuristics such as hard-coded sequences or feet 
+placements \cite{Winkler2015}. In spite of the significant efforts in the area of fall avoidance, 
+comparatively little research has focused
+on developing generalized self-righting techniques \cite{ben2008design, kessens2014metric}. 
+
+\section{Our methodology}
+
+We address this issue by providing a generalized approach for 
+delivering whole body movement solutions.  
+We use a CMA evolution strategy based procedure to address dynamic 
+non-periodic tasks for a quadrupedal robotic system: rearing and posture 
+recovery. A direct optimization technique on the time-parametrized joint 
+or torque trajectories would involve an inconveniently large search 
+space. Hence, we use a parametrized policy to encode these profiles, represented as 
+a weighted average of Gaussian kernels: $ f(t) = \sum_{i=1}^{M} w_i \phi_i(t)/ \sum_{i=1}^{M} \phi_i(t)$,
+% \begin{equation}\small
+%  \label{weighted_sum}
+%  f(t) = \sum_{i=1}^{M} w_i \phi_i(t)/ \sum_{i=1}^{M} \phi_i(t),
+%  \end{equation}
+\noindent where $w_i$ are the weights associated with each kernel $\phi_i, \; i \in [1, M]$, defined by:
+$\phi_i(t) = exp(- \frac{1}{2 \sigma^2} (t-\mu_i))$.
+
+The CMA algorithm is then used to optimize the weights of all 
+policies according to a task specific cost function, applied to the 
+whole body trajectory generated through the parametrized policy.
+In our experiments we use 12 such representations, one for each DoF of the quadrupedal system. 
+
+% \begin{figure}[t!]
+%  \centering
+%  \hspace*{-1mm}
+%  \includegraphics[scale=.4]{example_gr3.eps} 
+%  \caption{Example of a policy encoded as a weighted average of 
+%  Gaussian kernels: the means $\mu_i$ are equally spaced and the 
+%  variances are all fixed to $0.01$ and the weights have been 
+%  sampled from $[-1,1]$.}
+%   \label{fig:policy_example}
+% \end{figure}
+
+
+\section{Simulation Results}
+
+Using a realistic simulation of the hydraulically actuated HyQ2Max quadruped \cite{semini16tmech}, 
+we investigate two distinctive tasks: rearing and posture recovery. We employ a
+generalized form for the cost function, while adjusting the relative gains of each term 
+according to the current task. Although tuning the relative weights of such cost functions is a manual 
+process, a heuristic encoding of the same behavior would require a significantly higher effort.
+
+By exploiting the whole body model in order to obtain the solution, the optimization does not have
+to depend upon a pre-specified solution guess and can overcome errors caused by the use of simplified models.
+The resultant trajectories and the accuracy with which the user defined goals are achieved are 
+reflecting the relative ratios of the weights on the individual cost function terms. 
+
+
+\section{Conclusion and Future directions}
+
+The approach is able to provide 
+trajectory solutions which involve multiple contacts, without any predefined
+feet placement heuristics (e.g., contact points, timing or order of succession). 
+We aim to extend the methodology to deliver an optimal duration for the given task,
+while the final pose is fully determined, based on
+subsequent requirements. In the long term we aspire to develop a general tool for generating optimal dynamic 
+whole-body motions that are not necessarily periodic in nature.
+
+% \renewcommand{\baselinestretch}{0.9}
+
+\bibliographystyle{IEEEtran}
+% \bibliographystyle{ieeetr}
+\bibliography{icra17radulescu}
+
+\end{document}

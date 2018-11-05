@@ -1,0 +1,122 @@
+% % functions
+% \newcommand{\estimated}[1]{\hat{#1}}
+% \newcommand{\qindent}{\hspace{4em}}
+% 
+% % general
+
+
+\newcommand{\R}{\mathbb{R}}
+% rigid body dynamics
+\newcommand{\qdot}{\dot{q}}             % joint velocity
+\newcommand{\qddot}{\ddot{q}}           % joint acceleration
+\newcommand{\bq}{\mathbf{q}}            % (bold) joint position
+\newcommand{\bqdot}{\dot{\bq}}          % (bold) joint velocity
+\newcommand{\bqddot}{\ddot{\bq}}        % (bold) joint acceleration
+\newcommand{\bM}{\mathbf{M}}            % inertia matrix
+\newcommand{\bMt}{\tilde{\mathbf{M}}} 
+\newcommand{\bh}{\mathbf{h}}    
+\newcommand{\bS}{\mathbf{S}}    
+\newcommand{\VF}{\mathbf{V}}  
+\newcommand{\bR}{\mathbf{R}}  
+\newcommand{\bQ}{\mathbf{Q}}  
+\newcommand{\bJ}{\mathbf{J}} 
+\newcommand{\bzero}{\mathbf{0}} 
+\newcommand{\bP}{\mathbf{P}}  
+\newcommand{\traj}{\mathbf{\tau}}
+\newcommand{\bPsi}{\mathbf{\Psi}} 
+
+\newcommand{\Cn}{\mathcal{C}}
+
+ \newcommand{\bC}{\mathbf{C}} 
+\newcommand{\bg}{\mathbf{g}} 
+\newcommand{\bG}{\mathbf{G}} 
+\newcommand{\bw}{\mathbf{w}} 
+\newcommand{\Bfc}{\mathbf{f_c}} 
+\newcommand{\bz}{\mathbf{z}}
+
+\newcommand{\bV}{\mathbf{V}}    
+\newcommand{\bD}{\mathbf{D}}     
+
+\newcommand{\bI}{\mathbf{I}}   
+\newcommand{\bv}{\mathbf{v}}            % velocities at contact
+\newcommand{\blambda}{\mathbf{Y}} % forces at contact
+\newcommand{\bK}{\mathbf{K}}            % Jacobian of mapping from generalised to contact 
+\newcommand{\bKt}{\tilde{\mathbf{K}}}            % Jacobian of mapping from generalised to contact 
+\newcommand{\bc}{\mathbf{c}}   		% compacting term (known terms)
+\newcommand{\bff}{\mathbf{f}}   		% compacting term (contact impulse)
+\newcommand{\bct}{\tilde{\mathbf{c}}}   		% compacting term (known terms)
+\newcommand{\bA}{\mathbf{A}}     
+\newcommand{\ba}{\mathbf{a}}     
+\newcommand{\bF}{\mathbf{F}}     
+\newcommand{\bB}{\mathbf{B}}    
+
+\newcommand{\bl}{\mathbf{l}}  
+\newcommand{\bL}{\mathbf{L}}  
+\newcommand{\bLbar}{\bar {\mathbf{L}} }
+
+\newcommand{\btau}{\boldsymbol{\tau}}   % (bold) torque
+
+%optimal control
+\newcommand{\dimU}{m} %dimensionality of control
+\newcommand{\f}{\mathcal{F}} %dynamics function
+\newcommand{\F}{\mathbf{F}} %dynamics function
+\newcommand{\bu}{\mathbf{u}}  %control vector
+\newcommand{\bx}{\mathbf{x}}  %state
+\newcommand{\bp}{\mathbf{p}}  %state
+\newcommand{\bs}{\mathbf{s}}  %state
+% \newcommand{\bS}{\mathbf{S}}  %state
+\newcommand{\tc}{\rho} %terminal cost
+\newcommand{\rc}{r} %running cost
+\newcommand{\J}{\mathbf{J}} %cost function
+\newcommand{\dimX}{n}
+\newcommand{\bxdot}{\dot{\bx}}          % state time derivative
+\newcommand{\g}{\mathcal{G}} %stochasticity in dynamics
+
+\newcommand{ \probability}{\mathsf{p}}            % 
+\newcommand{\lambdaLM}{\beta}            % LM scalar iLQG
+
+\newcommand{\tp}{\mathit{tp}}
+\newcommand{\z}{\mathit{z}}
+\newcommand{\bxp}{\bx'}  
+\newcommand{\scost}{\mathit{o}} % state cost function
+
+\newcommand{\mbf}{\mathbf}
+
+\newcommand{\gMAT}{\mathbf{G}}
+
+\newcommand{\bbx}   {\bar{\bx}}         % nominal state sequence
+\newcommand{\bbu}   {\bar{\bu}}         % nominal command sequence
+
+\newcommand{\fx}   {\f_\bx}             % dynamics function derivative w.r.t. x
+\newcommand{\fu}   {\f_\bu}             % dynamics function derivative w.r.t. u
+\newcommand{\hx}   {\tc_\bx}              % terminal cost function derivative w.r.t. x
+\newcommand{\hxx}  {\tc_{\bx\bx}}         % terminal cost function 2nd derivative w.r.t. x
+\newcommand{\lx}   {\rc_\bx}              % running cost function derivative w.r.t. x
+\newcommand{\lu}   {\rc_\bu}              % running cost function derivative w.r.t. u
+\newcommand{\lxx}  {\rc_{\bx\bx}}         % running cost function 2nd derivative w.r.t. x
+\newcommand{\luu}  {\rc_{\bu\bu}}         % running cost function 2nd derivative w.r.t. u
+\newcommand{\lxu}  {\rc_{\bx\bu}}         % running cost function cross derivative
+
+\newcommand{\xbar}{\bar{\mathbf{x}}}
+\newcommand{\ubar}{\bar{\mathbf{u}}}
+\newcommand{\Jbar}{\bar{\J}}
+
+\newcommand{\Jxx}  {\J_{\bx\bx}}         % running cost function 2nd derivative w.r.t. x
+\newcommand{\Juu}  {\J_{\bu\bu}}         % running cost function 2nd derivative w.r.t. u
+\newcommand{\Jxu}  {\J_{\bx\bu}} 
+
+\newcommand{\utilde}{\tilde{\mathbf{u}}}
+\newcommand{\xtilde}{\tilde{\mathbf{x}}}
+\newcommand{\Jtilde}{\tilde{\J}}
+\newcommand{\Hfix}{\mathcal{H}}
+\newcommand{\Ham}{\mathbf{H}}
+
+
+\newcommand{\dt}{\mathrm{d}t}
+
+
+\def \BDelta { {\bf \Delta} }
+\def \Real { \mathbb{R} }
+
+ \newcommand{\dimQ}{\dimX}
+\newcommand{\dimC}{\dimU}
